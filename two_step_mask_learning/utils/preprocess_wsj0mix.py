@@ -16,7 +16,7 @@ from glob2 import glob
 import joblib
 from scipy.io import wavfile
 import torch
-import attentional_control.utils.progress_display as progress_display
+import two_step_mask_learning.utils.progress_display as progress_display
 from __config__ import *
 
 
