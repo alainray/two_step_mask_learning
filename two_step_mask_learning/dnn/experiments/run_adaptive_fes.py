@@ -9,10 +9,6 @@ import os
 import sys
 
 sys.path.append('../../../')
-from __config__ import API_KEY
-
-from comet_ml import Experiment
-
 import torch
 from tqdm import tqdm
 from pprint import pprint
@@ -53,17 +49,6 @@ if hparams["log_path"] is not None:
 else:
     audio_logger = None
 
-experiment = Experiment(API_KEY, project_name=hparams['project_name'])
-experiment.log_parameters(hparams)
-
-experiment_name = '_'.join(hparams['tags'])
-for tag in hparams['tags']:
-    experiment.add_tag(tag)
-
-if hparams['experiment_name'] is not None:
-    experiment.set_name(hparams['experiment_name'])
-else:
-    experiment.set_name(experiment_name)
 
 # define data loaders
 train_gen, val_gen, tr_val_gen = dataset_specific_params.get_data_loaders(hparams)
@@ -108,7 +93,6 @@ numparams = 0
 for f in model.parameters():
     if f.requires_grad:
         numparams += f.numel()
-experiment.log_parameter('Parameters', numparams)
 
 model = torch.nn.DataParallel(model).cuda()
 opt = torch.optim.Adam(model.module.parameters(), lr=hparams['learning_rate'])
@@ -122,8 +106,7 @@ for i in range(hparams['n_epochs']):
     res_dic = {}
     for loss_name in all_losses:
         res_dic[loss_name] = {'mean': 0., 'std': 0., 'acc': []}
-    print("Adaptive Exp: {} - {} || Epoch: {}/{}".format(experiment.get_key(),
-                                                         experiment.get_tags(),
+    print("Epoch: {}/{}".format(
                                                          i+1,
                                                          hparams['n_epochs']))
     model.train()
@@ -198,10 +181,7 @@ for i in range(hparams['n_epochs']):
     if hparams["metrics_log_path"] is not None:
         metrics_logger.log_metrics(res_dic, hparams["metrics_log_path"],
                                    tr_step, val_step)
-    res_dic = cometml_report.report_losses_mean_and_std(res_dic,
-                                                        experiment,
-                                                        tr_step,
-                                                        val_step)
+
 
 #     masks_vis.create_and_log_afe_internal(
 #         experiment,
