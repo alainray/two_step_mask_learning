@@ -194,6 +194,8 @@ for i in range(hparams['n_epochs']):
         hparams['afe_dir'], model.module, opt, tr_step,
         res_dic[back_loss_tr_loss_name]['mean'],
         res_dic[val_loss_name]['mean'], val_loss_name.replace("_", ""))
+   
+    pprint(res_dic)
     for loss_name in res_dic:
         res_dic[loss_name]['acc'] = []
-    pprint(res_dic)
+
