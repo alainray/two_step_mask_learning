@@ -31,7 +31,7 @@ WSJ_MIX_2_8K_PREPROCESSED_EVAL_PAD_P = os.path.join(WSJ0_MIX_2_8K_PREPROCESSED_M
 WSJ_MIX_2_8K_PREPROCESSED_TEST_PAD_P = os.path.join(WSJ0_MIX_2_8K_PREPROCESSED_MAX_BASE_P, 'tt')
 
 WSJ_MIX_HIERARCHICAL_P = '/mnt/data/hierarchical_sound_datasets/WSJ0_mix_partitioned/'
-ESC50_HIERARCHICAL_P = '/mnt/data/hierarchical_sound_datasets/ESC50_partitioned/'
+ESC50_HIERARCHICAL_P = '/content/ESC50_partitioned/'
 
 AFE_WSJ_MIX_2_8K = '/home/thymios/afes/min/'
 AFE_WSJ_MIX_2_8K_PAD = '/home/thymios/afes/pad/'
