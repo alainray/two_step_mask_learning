@@ -36,7 +36,7 @@ ESC50_HIERARCHICAL_P = '/content/ESC50_partitioned/'
 AFE_WSJ_MIX_2_8K = '/home/thymios/afes/min/'
 AFE_WSJ_MIX_2_8K_PAD = '/home/thymios/afes/pad/'
 AFE_WSJ_MIX_2_8K_NORMPAD = '/home/thymios/afes/norm_pad/'
-AFE_AUGMENTED = '/home/thymios/afes/augmented/'
+AFE_AUGMENTED = '/content/'
 
 TNMASK_WSJ_MIX_2_8K = '/home/thymios/tn_mask/min/'
 TNMASK_WSJ_MIX_2_8K_PAD = '/home/thymios/tn_mask/pad/'
