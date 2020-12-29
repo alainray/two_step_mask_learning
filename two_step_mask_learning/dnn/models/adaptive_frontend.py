@@ -113,7 +113,7 @@ class AdaptiveModulatorConvAE(nn.Module):
         self.freq_res = freq_res
         self.sample_res = sample_res
         self.mix_encoder = AdaptiveEncoder1D(freq_res, sample_res)
-        # self.modulator_encoder = ModulatorMask1D(freq_res, sample_res)
+        self.modulator_encoder = ModulatorMask1D(freq_res, sample_res)
         self.decoder = AdaptiveDecoder1D(freq_res, sample_res, n_sources)
         self.n_sources = n_sources
         self.regularizer = regularizer
