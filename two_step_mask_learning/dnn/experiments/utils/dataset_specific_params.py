@@ -189,7 +189,7 @@ def get_data_loaders(hparams):
             max_abs_snr=hparams['max_abs_snr'],
             fixed_seed=hparams['fixed_seed']
         )
-
+    print(these_args)
         data_loader = augmented_dataloader.AugmentedOnlineMixingDataset(
             **vars(these_args))
         train_gen = augmented_dataloader.get_data_gen_from_loader(data_loader)
