@@ -34,7 +34,7 @@ import two_step_mask_learning.dnn.experiments.utils.dataset_specific_params \
 import two_step_mask_learning.dnn.experiments.utils.hparams_parser as \
     hparams_parser
 import two_step_mask_learning.dnn.utils.metrics_logger as metrics_logger
-
+import numpy as np
 
 args = parser.get_args()
 hparams = hparams_parser.get_hparams_from_args(args)
@@ -195,7 +195,13 @@ for i in range(hparams['n_epochs']):
         res_dic[back_loss_tr_loss_name]['mean'],
         res_dic[val_loss_name]['mean'], val_loss_name.replace("_", ""))
    
-    pprint(res_dic)
+
+    
+    for l_name in losses_dict:
+        values = losses_dict[l_name]['acc']
+        losses_dict[l_name]['mean'] = np.mean(values)
+        losses_dict[l_name]['std'] = np.std(values)
     for loss_name in res_dic:
         res_dic[loss_name]['acc'] = []
 
+    pprint(res_dic)
