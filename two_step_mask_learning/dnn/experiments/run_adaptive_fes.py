@@ -197,11 +197,10 @@ for i in range(hparams['n_epochs']):
    
 
     
-    for l_name in losses_dict:
-        values = losses_dict[l_name]['acc']
-        losses_dict[l_name]['mean'] = np.mean(values)
-        losses_dict[l_name]['std'] = np.std(values)
-    for loss_name in res_dic:
+    for l_name in res_dic:
+        values = res_dic[l_name]['acc']
+        res_dic[l_name]['mean'] = np.mean(values)
+        res_dic[l_name]['std'] = np.std(values)
         res_dic[loss_name]['acc'] = []
 
     pprint(res_dic)
