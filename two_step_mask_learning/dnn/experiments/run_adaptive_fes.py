@@ -38,6 +38,7 @@ import two_step_mask_learning.dnn.utils.metrics_logger as metrics_logger
 
 args = parser.get_args()
 hparams = hparams_parser.get_hparams_from_args(args)
+print("hparams",hparams)
 dataset_specific_params.update_hparams(hparams)
 
 if hparams["log_path"] is not None:
