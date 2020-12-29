@@ -189,7 +189,8 @@ for i in range(hparams['n_epochs']):
 #         model.mix_encoder(m1wavs)[0].detach().cpu().numpy(),
 #         model.mix_encoder.conv.weight.squeeze().detach().cpu().numpy(),
 #         model.decoder.deconv.weight.squeeze().detach().cpu().numpy())
-#
+#   
+    print(hparams['afe_dir']) 
     adaptive_fe.AdaptiveModulatorConvAE.save_if_best(
         hparams['afe_dir'], model.module, opt, tr_step,
         res_dic[back_loss_tr_loss_name]['mean'],
